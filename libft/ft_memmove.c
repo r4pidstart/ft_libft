@@ -6,7 +6,7 @@
 /*   By: tjo <tjo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 15:10:24 by tjo               #+#    #+#             */
-/*   Updated: 2022/04/07 20:51:24 by tjo              ###   ########.fr       */
+/*   Updated: 2022/04/07 23:27:49 by tjo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 {
 	size_t	cur;
 
-	if ((size_t)dst - (size_t)src >= len)
+	if ((size_t)dst < (size_t)src)
 	{
 		cur = 0;
 		while (0 <= cur && cur < len)
