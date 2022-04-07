@@ -64,7 +64,7 @@ int	ft_isdigit(int c)
 ```
 <!-- MARKDOWN-AUTO-DOCS:END -->
 * 인자가 10진수 숫자에 속한다면 1을 리턴하고, 아니라면 0을 리턴한다.
-* 
+*
 - - -
 </details>
 
@@ -256,7 +256,7 @@ void	ft_bzero(void *s, size_t n)
 ```
 <!-- MARKDOWN-AUTO-DOCS:END -->
 * 인자로 주어진 포인터 *s*부터, *n* 만큼의 바이트를 0으로 채운다.
-* 메모리를 한 바이트씩 채우기 위해, *void*\*를 *char*\*로 변환해서 사용했다. 
+* 메모리를 한 바이트씩 채우기 위해, *void*\*를 *char*\*로 변환해서 사용했다.
 
 - - -
 </details>
@@ -600,7 +600,7 @@ char	*ft_strrchr(const char *s, int c)
 ```
 <!-- MARKDOWN-AUTO-DOCS:END -->
 * 인자로 주어진 *s* 스트링에서, 마지막으로 등장하는 *c*의 주소를 리턴한다. 만약 *c*가 존재하지 않는다면 NULL을 리턴한다.
-  
+
 - - -
 </details>
 
@@ -642,7 +642,7 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 * 인자로 주어진 포인터 *s1*, *s2*부터 *n*만큼의 바이트를 *unsigned char*로 비교한다.
 * 두 메모리의 값이 일치한다면 0을 리턴하고, 아니라면 첫 번째로 다른 바이트의 차이를 리턴한다.
 * 한 바이트씩 비교하기 위해 *void*\*를 *unsigned char*\*로 변환해서 사용했다.
-  
+
 - - -
 </details>
 
@@ -697,7 +697,7 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 <!-- MARKDOWN-AUTO-DOCS:END -->
 * *haystack* 문자열의, *needle* 문자열을 찾아 그 주소를 리턴한다. 최대 *len* 글자까지만 비교한다.
 * 만약 *needle* 문자열이 빈 문자열이라면, *haystack* 문자열의 주소를 리턴하며, *needle* 문자열이 존재하지 않는다면 NULL을 리턴한다.
-  
+
 - - -
 </details>
 
@@ -760,7 +760,28 @@ int	ft_atoi(const char *str)
 * 음수와 양수의 나머지/나눗셈 연산이 다르므로, 음수라면 양수로 바꾸어준다.
 * *INT32_MIN*을 양수로 변환하는 과정에서, *int*로는 오버플로우가 일어나므로 *long long*을 사용했다.
 * 유효하지 않은 글자가 등장하는 즉시, 지금까지의 결과를 반환한다.
-  
+
+- - -
+</details>
+
+<details>
+    <summary>ft_calloc – memory allocation</summary>
+
+<!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./libft/ft_calloc.c) -->
+<!-- MARKDOWN-AUTO-DOCS:END -->
+* *count* * *size* 만큼의 공간을 동적할당한 포인터를 리턴한다.
+* *malloc*과 다른 점은, 동적할당된 공간을 모두 0으로 초기화 한 뒤 리턴한다는 것이다.
+
+- - -
+</details>
+
+<details>
+    <summary>ft_strdup – save a copy of a string</summary>
+
+<!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./libft/ft_strdup.c) -->
+<!-- MARKDOWN-AUTO-DOCS:END -->
+* *s1* 스트링을 복사한, 새로운 스트링을 동적할당하여 반환한다.
+
 - - -
 </details>
 

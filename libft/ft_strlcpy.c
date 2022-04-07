@@ -6,7 +6,7 @@
 /*   By: tjo <tjo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 15:13:39 by tjo               #+#    #+#             */
-/*   Updated: 2022/04/07 20:51:52 by tjo              ###   ########.fr       */
+/*   Updated: 2022/04/08 00:43:27 by tjo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
-	const size_t	src_len = ft_strlen(src);
+	size_t const	src_len = ft_strlen(src);
 	size_t			cur;
 
 	if (dstsize == 0)
