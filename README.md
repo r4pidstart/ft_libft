@@ -366,7 +366,7 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 /*   By: tjo <tjo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 15:13:39 by tjo               #+#    #+#             */
-/*   Updated: 2022/04/07 20:51:52 by tjo              ###   ########.fr       */
+/*   Updated: 2022/04/08 00:43:27 by tjo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -374,7 +374,7 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
-	const size_t	src_len = ft_strlen(src);
+	size_t const	src_len = ft_strlen(src);
 	size_t			cur;
 
 	if (dstsize == 0)
@@ -768,6 +768,33 @@ int	ft_atoi(const char *str)
     <summary>ft_calloc – memory allocation</summary>
 
 <!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./libft/ft_calloc.c) -->
+<!-- The below code snippet is automatically added from ./libft/ft_calloc.c -->
+```c
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tjo <tjo@student.42seoul.kr>               +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/04/01 04:46:24 by tjo               #+#    #+#             */
+/*   Updated: 2022/04/07 20:50:44 by tjo              ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include"./libft.h"
+
+void	*ft_calloc(size_t count, size_t size)
+{
+	void	*ret;
+
+	ret = malloc(count * size);
+	if (!ret)
+		return (0);
+	ft_bzero(ret, count * size);
+	return (ret);
+}
+```
 <!-- MARKDOWN-AUTO-DOCS:END -->
 * *count* * *size* 만큼의 공간을 동적할당한 포인터를 리턴한다.
 * *malloc*과 다른 점은, 동적할당된 공간을 모두 0으로 초기화 한 뒤 리턴한다는 것이다.
@@ -779,6 +806,36 @@ int	ft_atoi(const char *str)
     <summary>ft_strdup – save a copy of a string</summary>
 
 <!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./libft/ft_strdup.c) -->
+<!-- The below code snippet is automatically added from ./libft/ft_strdup.c -->
+```c
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tjo <tjo@student.42seoul.kr>               +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/04/01 04:48:33 by tjo               #+#    #+#             */
+/*   Updated: 2022/04/07 20:51:43 by tjo              ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include"./libft.h"
+
+char	*ft_strdup(const char *s1)
+{
+	size_t	target_len;
+	char	*ret;
+
+	target_len = ft_strlen(s1);
+	ret = (char *)malloc(sizeof(char) * target_len + 1);
+	if (!ret)
+		return (0);
+	ft_memmove(ret, s1, target_len);
+	ret[target_len] = '\0';
+	return (ret);
+}
+```
 <!-- MARKDOWN-AUTO-DOCS:END -->
 * *s1* 스트링을 복사한, 새로운 스트링을 동적할당하여 반환한다.
 
