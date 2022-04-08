@@ -45,7 +45,7 @@ bonus: fclean
 	gcc $(CFLAGS) -c $^ -o $@
 
 clean:
-	rm -rf */*.o
+	rm -rf *.o
 
 fclean: clean
 	rm -rf $(NAME)
