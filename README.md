@@ -323,7 +323,7 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {
 	size_t	cur;
-		
+
 	if (!dst && !src)
 		return (0);
 	if (dst < src)
