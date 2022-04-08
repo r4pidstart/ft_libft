@@ -285,6 +285,8 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
 	size_t	cur;
 
+	if (!dst && !src)
+		return (0);
 	cur = -1;
 	while (++cur < n)
 		*(char *)(dst + cur) = *((char *)src + (cur));
@@ -321,7 +323,9 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {
 	size_t	cur;
-
+		
+	if (!dst && !src)
+		return (0);
 	if (dst < src)
 	{
 		cur = 0;
