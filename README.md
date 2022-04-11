@@ -856,6 +856,52 @@ libc, or included in a different form.*
     <summary>ft_substr</summary>
 
 <!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./libft/ft_substr.c) -->
+<!-- The below code snippet is automatically added from ./libft/ft_substr.c -->
+```c
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tjo <tjo@student.42seoul.kr>               +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/24 15:14:54 by tjo               #+#    #+#             */
+/*   Updated: 2022/04/07 20:52:08 by tjo              ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include"./libft.h"
+
+static size_t	min(size_t a, size_t b)
+{
+	if (a < b)
+		return (a);
+	else
+		return (b);
+}
+
+char	*ft_substr(char const *s, unsigned int start, size_t len)
+{
+	char	*ret;
+	size_t	substr_len;
+
+	if (!s)
+		return (0);
+	if ((unsigned int)ft_strlen(s) <= start)
+	{
+		ret = (char *)malloc(sizeof(char) * 1);
+		ret[0] = '\0';
+		return (ret);
+	}
+	substr_len = min(len, ft_strlen(s + start));
+	ret = (char *)malloc(sizeof(char) * substr_len + 1);
+	if (!ret)
+		return (0);
+	ft_memmove(ret, s + start, substr_len);
+	ret[substr_len] = 0;
+	return (ret);
+}
+```
 <!-- MARKDOWN-AUTO-DOCS:END -->
 
 > * Param:  
@@ -877,6 +923,41 @@ libc, or included in a different form.*
     <summary>ft_strjoin</summary>
 
 <!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./libft/ft_strjoin.c) -->
+<!-- The below code snippet is automatically added from ./libft/ft_strjoin.c -->
+```c
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tjo <tjo@student.42seoul.kr>               +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/24 15:14:54 by tjo               #+#    #+#             */
+/*   Updated: 2022/04/07 20:51:47 by tjo              ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include"./libft.h"
+
+char	*ft_strjoin(char const *s1, char const *s2)
+{
+	char	*ret;
+	size_t	s1_len;
+	size_t	s2_len;
+
+	if (!s1 || !s2)
+		return (0);
+	s1_len = ft_strlen(s1);
+	s2_len = ft_strlen(s2);
+	ret = (char *)malloc(sizeof(char) * s1_len + s2_len + 1);
+	if (!ret)
+		return (0);
+	ft_memmove(ret, s1, s1_len);
+	ft_memmove(ret + s1_len, s2, s2_len);
+	ret[s1_len + s2_len] = 0;
+	return (ret);
+}
+```
 <!-- MARKDOWN-AUTO-DOCS:END -->
 > * Param:  
 > #1. The prefix string.  
@@ -894,6 +975,74 @@ libc, or included in a different form.*
     <summary>ft_strtrim</summary>
 
 <!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./libft/ft_strtrim.c) -->
+<!-- The below code snippet is automatically added from ./libft/ft_strtrim.c -->
+```c
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tjo <tjo@student.42seoul.kr>               +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/24 15:30:06 by tjo               #+#    #+#             */
+/*   Updated: 2022/04/07 20:52:05 by tjo              ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include"./libft.h"
+
+static int	char_check(const char c, char *set)
+{
+	set--;
+	while (*(++set) != '\0')
+		if (c == *set)
+			return (1);
+	return (0);
+}
+
+static void	get_cur(size_t *lcur, size_t *rcur, char const *s1, char const *set)
+{
+	size_t	s_len;
+
+	s_len = ft_strlen(s1);
+	*lcur = 0;
+	*rcur = s_len - 1;
+	while (1)
+	{
+		if (!(*lcur < *rcur))
+		{
+			if (char_check(s1[*lcur], (char *)set))
+				(*lcur)++;
+			return ;
+		}
+		else if (*lcur < s_len && char_check(s1[*lcur], (char *)set))
+			(*lcur)++;
+		else if (0 <= *rcur && char_check(s1[*rcur], (char *)set))
+			(*rcur)--;
+		else
+			return ;
+	}
+}
+
+char	*ft_strtrim(char const *s1, char const *set)
+{
+	char	*ret;
+	size_t	ret_len;
+	size_t	lcur;
+	size_t	rcur;
+
+	if (!s1 || !set)
+		return (0);
+	get_cur(&lcur, &rcur, s1, set);
+	ret_len = rcur - lcur + 1;
+	ret = (char *)malloc(sizeof(char) * ret_len + 1);
+	if (!ret)
+		return (0);
+	ft_memmove(ret, s1 + lcur, ret_len);
+	ret[ret_len] = '\0';
+	return (ret);
+}
+```
 <!-- MARKDOWN-AUTO-DOCS:END -->
 > * Param:  
 > #1. The string to be trimmed.  
