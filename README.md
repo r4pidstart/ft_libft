@@ -780,7 +780,7 @@ int	ft_atoi(const char *str)
 
 <!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./libft/ft_strdup.c) -->
 <!-- MARKDOWN-AUTO-DOCS:END -->
-* *s1* 스트링을 복사한, 새로운 스트링을 동적할당하여 반환한다.
+* *s1* 스트링을 복사한, 새로운 스트링을 동적할당하여 리턴한다.
 
 - - -
 </details>
@@ -791,6 +791,61 @@ int	ft_atoi(const char *str)
 *In this second part, you must code a set of functions that are either not included in the
 libc, or included in a different form.*
 
+<details>
+    <summary>ft_substr</summary>
+
+<!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./libft/ft_substr.c) -->
+<!-- MARKDOWN-AUTO-DOCS:END -->
+
+> * Param:  
+> #1. The string from which to create the substring.   
+> #2. The start index of the substring in the string ’s’.  
+> #3. The maximum length of the substring.  
+> * Return:  
+> The substring. NULL if the allocation fails.
+> * Desc:  
+> Allocates (with malloc(3)) and returns a substring from the string ’s’. The substring begins at index ’start’ and is of maximum size ’len’.
+
+* *start*가 *s*의 길이보다 크다면, 빈 문자열을 반환하도록 예외를 처리해주었다.
+* 그렇지 않다면, *ft_memmove*를 이용해서 *s+start ~ s+start + substr_len+1* 만큼을 옮긴 문자열을 복사해 리턴했다.
+
+- - -
+</details>
+
+<details>
+    <summary>ft_strjoin</summary>
+
+<!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./libft/ft_strjoin.c) -->
+<!-- MARKDOWN-AUTO-DOCS:END -->
+> * Param:  
+> #1. The prefix string.  
+> #2. The suffix string.  
+> * Return:  
+> * The new string. NULL if the allocation fails.  
+> * Desc:  
+> Allocates (with malloc(3)) and returns a new string, which is the result of the concatenation of ’s1’ and ’s2’.
+
+* *s1*과 *s2*의 길이를 더한 값만큼 동적할당하여, *ft_memmove*를 이용해 복사해 리턴했다.
+- - -
+</details>
+
+<details>
+    <summary>ft_strtrim</summary>
+
+<!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./libft/ft_strtrim.c) -->
+<!-- MARKDOWN-AUTO-DOCS:END -->
+> * Param:  
+> #1. The string to be trimmed.  
+> #2. The reference set of characters to trim.  
+> * Return:  
+> The trimmed string. NULL if the allocation fails.  
+> * Desc:  
+> Allocates (with malloc(3)) and returns a copy of ’s1’ with the characters specified in ’set’ removed from the beginning and the end of the string.
+
+* *s1*의 양 끝에 커서를 두고, 커서가 가리키는 글자가 *set*에 포함되는지 확인하면서, 움직이는 방법을 사용했다.
+* *get_cur* 함수가 끝난 뒤, *lcur*와 *rcur*의 차이만큼을 동적할당한 뒤, *ft_memmove*를 이용해 복사해 리턴했다. 
+- - -
+</details>
 
 ## Part 3 - Bonus functions
 
