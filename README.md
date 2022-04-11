@@ -914,7 +914,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 > Allocates (with malloc(3)) and returns a substring from the string ’s’. The substring begins at index ’start’ and is of maximum size ’len’.
 
 * *start*가 *s*의 길이보다 크다면, 빈 문자열을 반환하도록 예외를 처리해주었다.
-* 그렇지 않다면, *ft_memmove*를 이용해서 *s+start ~ s+start + substr_len+1* 만큼을 옮긴 문자열을 복사해 리턴했다.
+* 그렇지 않다면, *ft_memmove*를 이용해서 *(s+start) ~ (s+start + substr_len+1)* 만큼을 옮긴 문자열을 복사해 리턴했다.
 
 - - -
 </details>
