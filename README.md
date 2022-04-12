@@ -1081,6 +1081,76 @@ char	*ft_strtrim(char const *s1, char const *set)
     <summary>ft_split</summary>
 
 <!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./libft/ft_split.c) -->
+<!-- The below code snippet is automatically added from ./libft/ft_split.c -->
+```c
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tjo <tjo@student.42seoul.kr>               +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/24 15:47:37 by tjo               #+#    #+#             */
+/*   Updated: 2022/04/12 15:28:24 by tjo              ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include"./libft.h"
+
+static size_t	get_substr_cnt(char	*s_cpy, char c)
+{
+	size_t	cur;
+	size_t	ret;
+
+	cur = 0;
+	ret = 0;
+	while (s_cpy[cur])
+	{
+		if (s_cpy[cur] == c)
+			s_cpy[cur] = 0;
+		if (s_cpy[cur] && (cur == 0 || !s_cpy[cur - 1]))
+			ret++;
+		cur++;
+	}
+	return (ret);
+}
+
+static char	**map_substr(char *s_cpy, size_t ret_cnt, size_t s_len)
+{
+	char	**ret;
+	size_t	cur;
+	size_t	ret_cur;
+
+	cur = 0;
+	ret_cur = 0;
+	ret = (char **)malloc(sizeof(char *) * (ret_cnt + 1));
+	if (!ret)
+		return (0);
+	while (cur < s_len)
+	{
+		if (s_cpy[cur] && (cur == 0 || !s_cpy[cur - 1]))
+			ret[ret_cur++] = ft_strdup(s_cpy + cur);
+		cur++;
+	}
+	ret[ret_cur] = 0;
+	free(s_cpy);
+	return (ret);
+}
+
+char	**ft_split(char const *s, char c)
+{
+	char	*s_cpy;
+	size_t	s_len;
+	size_t	ret_cnt;
+
+	if (!s)
+		return (0);
+	s_len = ft_strlen(s);
+	s_cpy = ft_strdup(s);
+	ret_cnt = get_substr_cnt(s_cpy, c);
+	return (map_substr(s_cpy, ret_cnt, s_len));
+}
+```
 <!-- MARKDOWN-AUTO-DOCS:END -->
 > * Param:  
 > #1. The string to be split.  
@@ -1101,6 +1171,70 @@ char	*ft_strtrim(char const *s1, char const *set)
     <summary>ft_itoa</summary>
 
 <!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./libft/ft_itoa.c) -->
+<!-- The below code snippet is automatically added from ./libft/ft_itoa.c -->
+```c
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tjo <tjo@student.42seoul.kr>               +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/29 14:54:06 by tjo               #+#    #+#             */
+/*   Updated: 2022/04/07 20:50:54 by tjo              ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include"./libft.h"
+
+int	get_length(int n)
+{
+	int	ret;
+
+	ret = 0;
+	if (n == 0)
+		ret++;
+	if (n < 0)
+	{
+		ret++;
+		n *= -1;
+	}
+	while (n)
+	{
+		ret++;
+		n /= 10;
+	}
+	return (ret);
+}
+
+char	*ft_itoa(int n)
+{
+	long long	tmp;
+	char		*ret;
+	int			cur;
+
+	ret = (char *)malloc(sizeof(char) * get_length(n) + 1);
+	if (!ret)
+		return (0);
+	tmp = n;
+	cur = 0;
+	if (n < 0)
+	{
+		ret[cur++] = '-';
+		tmp *= -1;
+	}
+	if (n == 0)
+		ret[cur++] = '0';
+	cur = get_length(n);
+	ret[cur] = '\0';
+	while (tmp)
+	{
+		ret[--cur] = tmp % 10 + '0';
+		tmp /= 10;
+	}
+	return (ret);
+}
+```
 <!-- MARKDOWN-AUTO-DOCS:END -->
 > * Param:  
 > #1. the integer to convert.  
@@ -1118,6 +1252,44 @@ char	*ft_strtrim(char const *s1, char const *set)
     <summary>ft_strmapi</summary>
 
 <!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./libft/ft_strmapi.c) -->
+<!-- The below code snippet is automatically added from ./libft/ft_strmapi.c -->
+```c
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tjo <tjo@student.42seoul.kr>               +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/29 15:07:09 by tjo               #+#    #+#             */
+/*   Updated: 2022/04/07 20:51:56 by tjo              ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include"./libft.h"
+
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+{
+	char	*ret;
+	size_t	s_len;
+	size_t	cur;
+
+	if (!s || !f)
+		return (0);
+	cur = 0;
+	s_len = ft_strlen(s);
+	ret = (char *)malloc(sizeof(char) * s_len + 1);
+	if (!ret)
+		return (0);
+	while (cur < s_len)
+	{
+		ret[cur] = f(cur, s[cur]);
+		cur++;
+	}
+	ret[cur] = 0;
+	return (ret);
+}
+```
 <!-- MARKDOWN-AUTO-DOCS:END -->
 > * Param:  
 > #1. The string on which to iterate.  
@@ -1135,6 +1307,34 @@ char	*ft_strtrim(char const *s1, char const *set)
     <summary>ft_striteri</summary>
 
 <!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./libft/ft_striteri.c) -->
+<!-- The below code snippet is automatically added from ./libft/ft_striteri.c -->
+```c
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tjo <tjo@student.42seoul.kr>               +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/29 15:11:02 by tjo               #+#    #+#             */
+/*   Updated: 2022/04/07 14:29:48 by tjo              ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
+{
+	char	*cur;
+
+	cur = s;
+	if (!cur)
+		return ;
+	while (*cur)
+	{
+		f(cur - s, cur);
+		cur++;
+	}
+}
+```
 <!-- MARKDOWN-AUTO-DOCS:END -->
 > * Param:  
 > #1. The string on which to iterate.  
