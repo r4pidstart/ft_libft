@@ -1077,6 +1077,78 @@ char	*ft_strtrim(char const *s1, char const *set)
 - - -
 </details>
 
+<details>
+    <summary>ft_split</summary>
+
+<!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./libft/ft_split.c) -->
+<!-- MARKDOWN-AUTO-DOCS:END -->
+> * Param:  
+> #1. The string to be split.  
+> #2. The delimiter character.  
+> * Return:  
+> The array of new strings resulting from the split. NULL if the allocation fails.  
+> * Desc:  
+> Allocates (with malloc(3)) and returns an array of strings obtained by splitting ’s’ using the character ’c’ as a delimiter. The array must be ended by a NULL pointer.
+
+* 주어진 *s*를 마음대로 다루기 위해, *s_cpy*에 *ft_strdup*을 이용해 복사본을 만들었다.
+* *s*로 만들 수 있는 substring의 개수를 세는 과정에서, *c*와 동일한 글자는 모두 *'\0'*으로 만들어 주었다.
+* 각 substring의 시작부분만 알 수 있다면, 미리 *c*를 *'\0'*으로 바꾸어 놓았으므로 substring의 끝 부분을 구할 필요가 없어진다.
+* 각 글자에 대해 문자열의 시작부분인지 확인하면서, *ft_strdup*을 이용해 복사했다.
+- - -
+</details>
+
+<details>
+    <summary>ft_itoa</summary>
+
+<!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./libft/ft_itoa.c) -->
+<!-- MARKDOWN-AUTO-DOCS:END -->
+> * Param:  
+> #1. the integer to convert.  
+> * Return:  
+> The string representing the integer. NULL if the allocation fails.  
+> * Desc:  
+> Allocates (with malloc(3)) and returns a string representing the integer received as an argument. Negative numbers must be handled.
+
+* 인자로 주어진 *n*를 10으로 나누면서, 이 숫자를 스트링으로 만들기 위해 몇 글자가 필요한지 센다.
+* 문자열의 뒤부터, *n*을 10으로 나눈 나머지를 채우는 방법으로 숫자를 스트링으로 변환할 수 있다.
+- - -
+</details>
+
+<details>
+    <summary>ft_strmapi</summary>
+
+<!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./libft/ft_strmapi.c) -->
+<!-- MARKDOWN-AUTO-DOCS:END -->
+> * Param:  
+> #1. The string on which to iterate.  
+> #2. The function to apply to each character.  
+> * Return:  
+> The string created from the successive applications of ’f’. Returns NULL if the allocation fails.
+> * Desc:  
+> Applies the function ’f’ to each character of the string ’s’ , and passing its index as first argument to create a new string (with malloc(3)) resulting from successive applications of ’f’.
+
+* *s*의 글자수를 세어 그만큼 동적할당한 뒤, 각 글자에 *f()*를 적용한 결과를 순서대로 저장해 리턴했다.
+- - -
+</details>
+
+<details>
+    <summary>ft_striteri</summary>
+
+<!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./libft/ft_striteri.c) -->
+<!-- MARKDOWN-AUTO-DOCS:END -->
+> * Param:  
+> #1. The string on which to iterate.  
+> #2. The function to apply to each character.  
+> * Return:  
+> None.
+> * Desc:  
+> Applies the function f to each character of the string passed as argument, and passing its index as first argument. Each character is passed by address to f to be modified if necessary
+
+* 각 글자의 인덱스가 필요하므로, 포인터 *s*를 복사한 포인터 *cur*를 만들었다.
+* *\*cur*이 *'\0'*이 될 때 까지, 각 글자에 *f()*를 적용했다.
+- - -
+</details>
+
 ## Part 3 - Bonus functions
 
 *The following functions will allow you to easily use your lists.*

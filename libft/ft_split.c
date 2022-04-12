@@ -6,7 +6,7 @@
 /*   By: tjo <tjo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 15:47:37 by tjo               #+#    #+#             */
-/*   Updated: 2022/04/07 20:51:38 by tjo              ###   ########.fr       */
+/*   Updated: 2022/04/12 15:28:24 by tjo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static char	**map_substr(char *s_cpy, size_t ret_cnt, size_t s_len)
 	{
 		if (s_cpy[cur] && (cur == 0 || !s_cpy[cur - 1]))
 			ret[ret_cur++] = ft_strdup(s_cpy + cur);
-	cur++;
+		cur++;
 	}
 	ret[ret_cur] = 0;
 	free(s_cpy);
@@ -61,10 +61,7 @@ char	**ft_split(char const *s, char c)
 	if (!s)
 		return (0);
 	s_len = ft_strlen(s);
-	s_cpy = (char *)malloc(sizeof(char) * s_len + 1);
-	if (!s_cpy)
-		return (0);
-	ft_memmove(s_cpy, s, s_len + 1);
+	s_cpy = ft_strdup(s);
 	ret_cnt = get_substr_cnt(s_cpy, c);
 	return (map_substr(s_cpy, ret_cnt, s_len));
 }
