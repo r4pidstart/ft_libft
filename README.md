@@ -1524,3 +1524,171 @@ void	ft_putnbr_fd(int n, int fd)
 ## Part 3 - Bonus functions
 
 *The following functions will allow you to easily use your lists.*
+
+<details>
+	<summary>t_list</summary>
+```c
+typedef struct s_list
+{
+	void			*content;
+	struct s_list	*next;
+}t_list;
+```
+
+* content : The data contained in the element. The void * allows to store any kind of data.  
+* next : The next element’s address or NULL if it’s the last element.  
+</details>
+
+<details>
+    <summary>ft_lstnew</summary>
+
+<!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./libft/ft_lstnew.c) -->
+<!-- MARKDOWN-AUTO-DOCS:END -->
+> * Param:  
+> #1. The content to create the new element with.  
+> * Return:  
+> The new element.  
+> * Desc:  
+> Allocates (with malloc(3)) and returns a new element. The variable ’content’ is initialized with the value of the parameter ’content’. The variable ’next’ is initialized to NULL.
+
+* 새로운 포인터에 동적할당 한 뒤, *data*를 담아서 리턴한다.
+- - -
+</details>
+
+<details>
+    <summary>ft_lstadd_front</summary>
+
+<!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./libft/ft_lstadd_front.c) -->
+<!-- MARKDOWN-AUTO-DOCS:END -->
+> * Param:  
+> #1. The address of a pointer to the first link of a list.  
+> #2. The address of a pointer to the element to be added to the list.  
+> * Return:  
+> None  
+> * Desc:  
+> Adds the element ’new’ at the beginning of the list.
+
+* *lst*의 처음 부분에 *new*를 삽입해야하므로, *new*의 다음 노드가, 기존 *lst*의 첫 번째 노드가 된다.
+* *lst*가 이중 포인터이므로, *\*lst*를 *new*의 주소로 바꿔준다.
+- - -
+</details>
+
+<details>
+    <summary>ft_lstsize</summary>
+
+<!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./libft/ft_lstsize.c) -->
+<!-- MARKDOWN-AUTO-DOCS:END -->
+> * Param:  
+> #1. The beginning of the list.  
+> * Return:  
+> Length of the list.  
+> * Desc:  
+> Counts the number of elements in a list.
+
+* *lst*의 끝까지 이동한 뒤, 이동한 횟수를 반환한다.
+- - -
+</details>
+
+<details>
+    <summary>ft_lstlast</summary>
+
+<!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./libft/ft_lstlast.c) -->
+<!-- MARKDOWN-AUTO-DOCS:END -->
+> * Param:  
+> #1. The beginning of the list.  
+> * Return:  
+> Last element of the list.  
+> * Desc:  
+> Returns the last element of the list.
+
+* 마지막 노드의 *next*는 *NULL*을 가리키기에, *ret->next*가 *NULL*일 때 까지 이동하고, *ret*을 반환한다.
+- - -
+</details>
+
+<details>
+    <summary>ft_lstadd_back</summary>
+
+<!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./libft/ft_lstadd_back.c) -->
+<!-- MARKDOWN-AUTO-DOCS:END -->
+> * Param:  
+> #1. The address of a pointer to the first link of a list.  
+> #2. The address of a pointer to the element to be added to the list.  
+> * Return:  
+> None  
+> * Desc:  
+> Adds the element ’new’ at the end of the list.
+
+* 마지막 노드까지 이동한 뒤, 마지막 노드의 *next* 포인터를 *new*의 주소로 바꿔주었다.
+- - -
+</details>
+
+<details>
+    <summary>ft_lstdelone</summary>
+
+<!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./libft/ft_lstdelone.c) -->
+<!-- MARKDOWN-AUTO-DOCS:END -->
+> * Param:  #1. The element to free.  
+> #2. The address of the function used to delete the content.  
+> * Return:  
+> None  
+> * Desc:  
+> Takes as a parameter an element and frees the memory of the element’s content using the function ’del’ given as a parameter and free the element. The memory of ’next’ must not be freed.
+
+* *lst->content*는 주어진 *del* 함수를 이용해 삭제해주고, 해당 노드는 *free*해준다.
+- - -
+</details>
+
+<details>
+    <summary>ft_lstclear</summary>
+
+<!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./libft/ft_lstclear.c) -->
+<!-- MARKDOWN-AUTO-DOCS:END -->
+> * Param:  
+> #1. The address of a pointer to an element.  
+> #2. The address of the function used to delete the content of the element.  
+> * Return:  
+> None  
+> * Desc:  
+> Deletes and frees the given element and every successor of that element, using the function ’del’ and free(3). Finally, the pointer to the list must be set to NULL.
+
+* *ft_lstdelone*과 같은 방법으로, *content*는 *del* 함수를 이용해 삭제해준다.
+* 해당 작업을 리스트의 모든 노드에 대해 반복한 뒤, 리스트의 시작을 *NULL*로 초기화한다.
+- - -
+</details>
+
+<details>
+    <summary>ft_lstiter</summary>
+
+<!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./libft/ft_lstiter.c) -->
+<!-- MARKDOWN-AUTO-DOCS:END -->
+> * Param:  
+> #1. The adress of a pointer to an element.  
+> #2. The adress of the function used to iterate on the list.  
+> * Return:  
+> None  
+> * Desc:  
+> Iterates the list ’lst’ and applies the function ’f’ to the content of each element.
+
+* *lst*를 순회하면서, 각 노드의 *content*에 *f*를 적용한다.
+- - -
+</details>
+
+<details>
+    <summary>ft_lstmap</summary>
+
+<!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./libft/ft_lstmap.c) -->
+<!-- MARKDOWN-AUTO-DOCS:END -->
+> * Param:  
+> #1. The adress of a pointer to an element.  
+> #2. The adress of the function used to iterate on the list.  
+> #3. The adress of the function used to delete the content of an element if needed.  
+> * Return:  
+> The new list. NULL if the allocation fails.  
+> * Desc:  
+> Iterates the list ’lst’ and applies the function ’f’ to the content of each element. Creates a new list resulting of the successive applications of the function ’f’. The ’del’ function is used to delete the content of an element if needed.
+
+* *ft_lstiter*와 같이 *lst*를 순회하면서, 각 노트의 *content*에 *f*를 적용한 결과를 새로운 리스트에 담아 반환해야한다.
+* 그러나 *del* 함수가 왜 주어졌는지에 대해 생각해보니, 기존에는 동적할당을 한 번만 사용해도 됐기에, 할당에 실패하면 바로 *NULL*을 반환해도 괜찮았지만, 리스트는 어느 한 노드의 동적할당이 실패하더라도, 이전에 할당했던 노드들에 대해서는 이미 할당이 되어있으니, 동적할당이 실패하는 즉시 리턴하게 될 경우 이 부분에서 메모리 누수가 발생할 수 있다.
+* 그러므로 동적할당을 실패했다면, 새로 만들어두었던 리스트에 대해서 *free*하는 작업을 해주었다.
+- - -
+</details>
