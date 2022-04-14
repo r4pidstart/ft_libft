@@ -1527,6 +1527,7 @@ void	ft_putnbr_fd(int n, int fd)
 
 <details>
 	<summary>t_list</summary>
+	
 ```c
 typedef struct s_list
 {
