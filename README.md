@@ -1349,6 +1349,74 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 - - -
 </details>
 
+<details>
+    <summary>ft_putchar_fd</summary>
+
+<!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./libft/ft_putchar_fd.c) -->
+<!-- MARKDOWN-AUTO-DOCS:END -->
+> * Param:  
+> #1. The character to output.   
+> #2. The file descriptor on which to write.  
+> * Return:  
+> None.  
+> * Desc:  
+> Outputs the character ’c’ to the given file descriptor.  
+
+* 주어진 *c*를 *fd*로 출력한다.
+- - -
+</details>
+
+<details>
+    <summary>ft_putstr_fd</summary>
+
+<!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./libft/ft_putstr_fd.c) -->
+<!-- MARKDOWN-AUTO-DOCS:END -->
+> * Param:  
+> #1. The string to output.  
+> #2. The file descriptor on which to write.  
+> * Return:  
+> None.  
+> * Desc:  
+> Outputs the string ’s’ to the given file descriptor.
+
+* 주어진 *s*를 *fd*로 출력한다.
+- - -
+</details>
+
+<details>
+    <summary>ft_putendl_fd.c</summary>
+
+<!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./libft/ft_putendl_fd.c) -->
+<!-- MARKDOWN-AUTO-DOCS:END -->
+> * Param:  
+> #1. The string to output.  
+> #2. The file descriptor on which to write.  
+> * Return:  
+> None.  
+> * Desc:  
+> Outputs the string ’s’ to the given file descriptor, followed by a newline.
+
+* 주어진 *s*를 *fd*로 출력한다. 그리고 뒤에 개행을 출력한다.
+- - -
+</details>
+
+<details>
+    <summary>ft_putnbr_fd</summary>
+
+<!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./libft/ft_putnbr_fd.c) -->
+<!-- MARKDOWN-AUTO-DOCS:END -->
+> * Param:  
+> #1. The integer to output.  
+> #2. The file descriptor on which to write.
+> * Return:  
+> None.  
+> * Desc:  
+> Outputs the integer ’n’ to the given file descriptor.
+
+* 주어진 *n*를 *fd*로 출력한다. *ft_itoa*와 동일한 방법을 사용했다.
+- - -
+</details>
+
 ## Part 3 - Bonus functions
 
 *The following functions will allow you to easily use your lists.*
