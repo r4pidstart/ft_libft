@@ -1347,6 +1347,27 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char*))
     <summary>ft_putchar_fd</summary>
 
 <!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./libft/ft_putchar_fd.c) -->
+<!-- The below code snippet is automatically added from ./libft/ft_putchar_fd.c -->
+```c
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tjo <tjo@student.42seoul.kr>               +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/29 15:16:03 by tjo               #+#    #+#             */
+/*   Updated: 2022/04/07 20:51:28 by tjo              ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include"./libft.h"
+
+void	ft_putchar_fd(char c, int fd)
+{
+	write(fd, &c, 1);
+}
+```
 <!-- MARKDOWN-AUTO-DOCS:END -->
 > * Param:  
 > #1. The character to output.   
@@ -1364,6 +1385,30 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char*))
     <summary>ft_putstr_fd</summary>
 
 <!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./libft/ft_putstr_fd.c) -->
+<!-- The below code snippet is automatically added from ./libft/ft_putstr_fd.c -->
+```c
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tjo <tjo@student.42seoul.kr>               +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/29 15:16:58 by tjo               #+#    #+#             */
+/*   Updated: 2022/04/07 20:51:34 by tjo              ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include"./libft.h"
+
+void	ft_putstr_fd(char *s, int fd)
+{
+	if (!s)
+		return ;
+	while (*s)
+		write(fd, s++, 1);
+}
+```
 <!-- MARKDOWN-AUTO-DOCS:END -->
 > * Param:  
 > #1. The string to output.  
@@ -1381,6 +1426,31 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char*))
     <summary>ft_putendl_fd.c</summary>
 
 <!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./libft/ft_putendl_fd.c) -->
+<!-- The below code snippet is automatically added from ./libft/ft_putendl_fd.c -->
+```c
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tjo <tjo@student.42seoul.kr>               +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/29 15:16:58 by tjo               #+#    #+#             */
+/*   Updated: 2022/04/07 20:51:30 by tjo              ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include"./libft.h"
+
+void	ft_putendl_fd(char *s, int fd)
+{
+	if (!s)
+		return ;
+	while (*s)
+		write(fd, s++, 1);
+	write(fd, "\n", 1);
+}
+```
 <!-- MARKDOWN-AUTO-DOCS:END -->
 > * Param:  
 > #1. The string to output.  
@@ -1398,6 +1468,46 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char*))
     <summary>ft_putnbr_fd</summary>
 
 <!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./libft/ft_putnbr_fd.c) -->
+<!-- The below code snippet is automatically added from ./libft/ft_putnbr_fd.c -->
+```c
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tjo <tjo@student.42seoul.kr>               +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/29 15:20:31 by tjo               #+#    #+#             */
+/*   Updated: 2022/04/07 21:05:41 by tjo              ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include"./libft.h"
+
+void	ft_putnbr_fd(int n, int fd)
+{
+	char		res[12];
+	long long	num;
+	int			cnt;
+
+	num = n;
+	cnt = 0;
+	if (num == 0)
+		write(fd, "0", 1);
+	if (num < 0)
+	{
+		write(fd, "-", 1);
+		num *= -1;
+	}
+	while (num)
+	{
+		res[cnt++] = num % 10 + '0';
+		num /= 10;
+	}
+	while (cnt--)
+		write(fd, res + cnt, 1);
+}
+```
 <!-- MARKDOWN-AUTO-DOCS:END -->
 > * Param:  
 > #1. The integer to output.  
