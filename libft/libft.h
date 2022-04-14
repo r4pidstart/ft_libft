@@ -6,7 +6,7 @@
 /*   By: tjo <tjo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 15:16:55 by tjo               #+#    #+#             */
-/*   Updated: 2022/04/07 21:27:41 by tjo              ###   ########.fr       */
+/*   Updated: 2022/04/14 14:30:46 by tjo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define LIBFT_H
 # include<stdlib.h>
 # include<unistd.h>
+#define INT64_MAX 9223372036854775807LL
 
 typedef struct s_list
 {
