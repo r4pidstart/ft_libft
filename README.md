@@ -1543,6 +1543,34 @@ typedef struct s_list
     <summary>ft_lstnew</summary>
 
 <!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./libft/ft_lstnew.c) -->
+<!-- The below code snippet is automatically added from ./libft/ft_lstnew.c -->
+```c
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tjo <tjo@student.42seoul.kr>               +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/29 15:23:40 by tjo               #+#    #+#             */
+/*   Updated: 2022/04/07 20:51:11 by tjo              ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include"./libft.h"
+
+t_list	*ft_lstnew(void *content)
+{
+	t_list	*ret;
+
+	ret = (t_list *)malloc(sizeof(t_list));
+	if (!ret)
+		return (0);
+	ret->content = content;
+	ret->next = 0;
+	return (ret);
+}
+```
 <!-- MARKDOWN-AUTO-DOCS:END -->
 > * Param:  
 > #1. The content to create the new element with.  
@@ -1559,6 +1587,28 @@ typedef struct s_list
     <summary>ft_lstadd_front</summary>
 
 <!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./libft/ft_lstadd_front.c) -->
+<!-- The below code snippet is automatically added from ./libft/ft_lstadd_front.c -->
+```c
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tjo <tjo@student.42seoul.kr>               +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/29 15:29:34 by tjo               #+#    #+#             */
+/*   Updated: 2022/04/07 20:51:00 by tjo              ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include"./libft.h"
+
+void	ft_lstadd_front(t_list **lst, t_list *new)
+{
+	new->next = *lst;
+	*lst = new;
+}
+```
 <!-- MARKDOWN-AUTO-DOCS:END -->
 > * Param:  
 > #1. The address of a pointer to the first link of a list.  
@@ -1577,6 +1627,39 @@ typedef struct s_list
     <summary>ft_lstsize</summary>
 
 <!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./libft/ft_lstsize.c) -->
+<!-- The below code snippet is automatically added from ./libft/ft_lstsize.c -->
+```c
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tjo <tjo@student.42seoul.kr>               +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/29 15:32:01 by tjo               #+#    #+#             */
+/*   Updated: 2022/04/07 20:51:16 by tjo              ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include"./libft.h"
+
+int	ft_lstsize(t_list *lst)
+{
+	int		cnt;
+	t_list	*cur;
+
+	if (!lst)
+		return (0);
+	cnt = 0;
+	cur = lst;
+	while (cur)
+	{
+		cur = cur->next;
+		cnt++;
+	}
+	return (cnt);
+}
+```
 <!-- MARKDOWN-AUTO-DOCS:END -->
 > * Param:  
 > #1. The beginning of the list.  
@@ -1593,6 +1676,34 @@ typedef struct s_list
     <summary>ft_lstlast</summary>
 
 <!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./libft/ft_lstlast.c) -->
+<!-- The below code snippet is automatically added from ./libft/ft_lstlast.c -->
+```c
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tjo <tjo@student.42seoul.kr>               +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/29 15:35:12 by tjo               #+#    #+#             */
+/*   Updated: 2022/04/07 20:51:07 by tjo              ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include"./libft.h"
+
+t_list	*ft_lstlast(t_list *lst)
+{
+	t_list	*ret;
+
+	if (!lst)
+		return (0);
+	ret = lst;
+	while (ret->next)
+		ret = ret->next;
+	return (ret);
+}
+```
 <!-- MARKDOWN-AUTO-DOCS:END -->
 > * Param:  
 > #1. The beginning of the list.  
@@ -1609,6 +1720,37 @@ typedef struct s_list
     <summary>ft_lstadd_back</summary>
 
 <!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./libft/ft_lstadd_back.c) -->
+<!-- The below code snippet is automatically added from ./libft/ft_lstadd_back.c -->
+```c
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tjo <tjo@student.42seoul.kr>               +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/29 15:37:37 by tjo               #+#    #+#             */
+/*   Updated: 2022/04/07 20:50:58 by tjo              ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include"./libft.h"
+
+void	ft_lstadd_back(t_list **lst, t_list *new)
+{
+	t_list	*cur;
+
+	if (!(*lst))
+	{
+		*lst = new;
+		return ;
+	}
+	cur = *lst;
+	while (cur->next)
+		cur = cur->next;
+	cur->next = new;
+}
+```
 <!-- MARKDOWN-AUTO-DOCS:END -->
 > * Param:  
 > #1. The address of a pointer to the first link of a list.  
@@ -1626,6 +1768,28 @@ typedef struct s_list
     <summary>ft_lstdelone</summary>
 
 <!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./libft/ft_lstdelone.c) -->
+<!-- The below code snippet is automatically added from ./libft/ft_lstdelone.c -->
+```c
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tjo <tjo@student.42seoul.kr>               +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/29 15:42:11 by tjo               #+#    #+#             */
+/*   Updated: 2022/04/07 20:51:04 by tjo              ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include"./libft.h"
+
+void	ft_lstdelone(t_list *lst, void (*del)(void *))
+{
+	del(lst->content);
+	free(lst);
+}
+```
 <!-- MARKDOWN-AUTO-DOCS:END -->
 > * Param:  #1. The element to free.  
 > #2. The address of the function used to delete the content.  
@@ -1642,6 +1806,38 @@ typedef struct s_list
     <summary>ft_lstclear</summary>
 
 <!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./libft/ft_lstclear.c) -->
+<!-- The below code snippet is automatically added from ./libft/ft_lstclear.c -->
+```c
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tjo <tjo@student.42seoul.kr>               +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/29 15:43:18 by tjo               #+#    #+#             */
+/*   Updated: 2022/04/07 20:51:03 by tjo              ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include"./libft.h"
+
+void	ft_lstclear(t_list **lst, void (*del)(void *))
+{
+	t_list	*cur;
+	t_list	*tmp;
+
+	cur = *lst;
+	while (cur)
+	{
+		tmp = cur;
+		cur = cur->next;
+		del(tmp->content);
+		free(tmp);
+	}
+	*lst = 0;
+}
+```
 <!-- MARKDOWN-AUTO-DOCS:END -->
 > * Param:  
 > #1. The address of a pointer to an element.  
@@ -1660,6 +1856,31 @@ typedef struct s_list
     <summary>ft_lstiter</summary>
 
 <!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./libft/ft_lstiter.c) -->
+<!-- The below code snippet is automatically added from ./libft/ft_lstiter.c -->
+```c
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tjo <tjo@student.42seoul.kr>               +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/31 14:51:12 by tjo               #+#    #+#             */
+/*   Updated: 2022/04/07 20:51:06 by tjo              ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include"./libft.h"
+
+void	ft_lstiter(t_list *lst, void (*f)(void *))
+{
+	while (lst)
+	{
+		f(lst->content);
+		lst = lst->next;
+	}
+}
+```
 <!-- MARKDOWN-AUTO-DOCS:END -->
 > * Param:  
 > #1. The adress of a pointer to an element.  
@@ -1677,6 +1898,63 @@ typedef struct s_list
     <summary>ft_lstmap</summary>
 
 <!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./libft/ft_lstmap.c) -->
+<!-- The below code snippet is automatically added from ./libft/ft_lstmap.c -->
+```c
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tjo <tjo@student.42seoul.kr>               +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/31 14:52:36 by tjo               #+#    #+#             */
+/*   Updated: 2022/04/07 20:51:09 by tjo              ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include"./libft.h"
+
+static void	free_nodes(t_list *dummy, void (*del)(void *))
+{
+	t_list	*cur;
+	t_list	*tmp;
+
+	cur = dummy->next;
+	while (cur)
+	{
+		tmp = cur;
+		cur = cur->next;
+		del(tmp->content);
+		free(tmp);
+	}
+	free(dummy);
+}
+
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
+{
+	t_list	*dummy;
+	t_list	*tmp;
+	t_list	*cur;
+
+	dummy = ft_lstnew(NULL);
+	cur = dummy;
+	while (lst)
+	{
+		tmp = ft_lstnew(f(lst->content));
+		if (!tmp)
+		{
+			free_nodes(dummy, del);
+			return (0);
+		}
+		cur->next = tmp;
+		cur = cur->next;
+		lst = lst->next;
+	}
+	cur = dummy->next;
+	free(dummy);
+	return (cur);
+}
+```
 <!-- MARKDOWN-AUTO-DOCS:END -->
 > * Param:  
 > #1. The adress of a pointer to an element.  
