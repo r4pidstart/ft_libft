@@ -14,7 +14,7 @@
 # define LIBFT_H
 # include<stdlib.h>
 # include<unistd.h>
-#define INT64_MAX 9223372036854775807LL
+# define INT64_MAX 9223372036854775807LL
 
 typedef struct s_list
 {
