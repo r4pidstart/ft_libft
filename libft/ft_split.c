@@ -62,6 +62,8 @@ char	**ft_split(char const *s, char c)
 		return (0);
 	s_len = ft_strlen(s);
 	s_cpy = ft_strdup(s);
+	if (!s_cpy)
+		return (0);
 	ret_cnt = get_substr_cnt(s_cpy, c);
 	return (map_substr(s_cpy, ret_cnt, s_len));
 }
