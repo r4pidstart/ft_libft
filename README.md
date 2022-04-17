@@ -1087,7 +1087,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 /*   By: tjo <tjo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 15:47:37 by tjo               #+#    #+#             */
-/*   Updated: 2022/04/15 16:14:47 by tjo              ###   ########.fr       */
+/*   Updated: 2022/04/18 01:31:02 by tjo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -1137,9 +1137,11 @@ static char	**map_substr(char *s_cpy, size_t ret_cnt, size_t s_len)
 	while (cur < s_len)
 	{
 		if (s_cpy[cur] && (cur == 0 || !s_cpy[cur - 1]))
+		{
 			ret[ret_cur] = ft_strdup(s_cpy + cur);
-		if (!ret[ret_cur++])
-			return (free_all(ret, ret_cur - 1, s_cpy));
+			if (!ret[ret_cur++])
+				return (free_all(ret, ret_cur - 1, s_cpy));
+		}
 		cur++;
 	}
 	ret[ret_cur] = 0;
