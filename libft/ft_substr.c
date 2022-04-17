@@ -6,7 +6,7 @@
 /*   By: tjo <tjo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 15:14:54 by tjo               #+#    #+#             */
-/*   Updated: 2022/04/07 20:52:08 by tjo              ###   ########.fr       */
+/*   Updated: 2022/04/17 22:33:02 by tjo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	if ((unsigned int)ft_strlen(s) <= start)
 	{
 		ret = (char *)malloc(sizeof(char) * 1);
+		if (!ret)
+			return (0);
 		ret[0] = '\0';
 		return (ret);
 	}
