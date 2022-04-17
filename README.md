@@ -1085,7 +1085,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 /*   By: tjo <tjo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 15:47:37 by tjo               #+#    #+#             */
-/*   Updated: 2022/04/12 15:28:24 by tjo              ###   ########.fr       */
+/*   Updated: 2022/04/15 16:14:47 by tjo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -1109,6 +1109,18 @@ static size_t	get_substr_cnt(char	*s_cpy, char c)
 	return (ret);
 }
 
+static char	**free_all(char **ret, size_t cur, char *s_cpy)
+{
+	size_t	idx;
+
+	idx = 0;
+	while (idx < cur)
+		free(ret[cur]);
+	free(ret);
+	free(s_cpy);
+	return (0);
+}
+
 static char	**map_substr(char *s_cpy, size_t ret_cnt, size_t s_len)
 {
 	char	**ret;
@@ -1123,7 +1135,9 @@ static char	**map_substr(char *s_cpy, size_t ret_cnt, size_t s_len)
 	while (cur < s_len)
 	{
 		if (s_cpy[cur] && (cur == 0 || !s_cpy[cur - 1]))
-			ret[ret_cur++] = ft_strdup(s_cpy + cur);
+			ret[ret_cur] = ft_strdup(s_cpy + cur);
+		if (!ret[ret_cur++])
+			return (free_all(ret, ret_cur - 1, s_cpy));
 		cur++;
 	}
 	ret[ret_cur] = 0;
@@ -1141,6 +1155,8 @@ char	**ft_split(char const *s, char c)
 		return (0);
 	s_len = ft_strlen(s);
 	s_cpy = ft_strdup(s);
+	if (!s_cpy)
+		return (0);
 	ret_cnt = get_substr_cnt(s_cpy, c);
 	return (map_substr(s_cpy, ret_cnt, s_len));
 }
@@ -1158,6 +1174,7 @@ char	**ft_split(char const *s, char c)
 * *s*로 만들 수 있는 substring의 개수를 세는 과정에서, *c*와 동일한 글자는 모두 *'\0'*으로 만들어 주었다.
 * 각 substring의 시작부분만 알 수 있다면, 미리 *c*를 *'\0'*으로 바꾸어 놓았으므로 substring의 끝 부분을 구할 필요가 없어진다.
 * 각 글자에 대해 문자열의 시작부분인지 확인하면서, *ft_strdup*을 이용해 복사했다.
+* *ft_strdup*을 사용하다가, *NULL*이 반환될 수 있다는 점에 유의해야한다. 메모리 누수가 발생할 수 있다.
 - - -
 </details>
 
