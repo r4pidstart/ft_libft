@@ -35,6 +35,8 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	t_list	*cur;
 
 	dummy = ft_lstnew(NULL);
+	if (!dummy)
+		return (0);
 	cur = dummy;
 	while (lst)
 	{
