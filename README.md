@@ -735,14 +735,6 @@ static int	my_issign(int c)
 	return ('+' == c || '-' == c);
 }
 
-static int	check_overflow(long long ret, int next_digit)
-{
-	long long	lim;
-
-	lim = (INT64_MAX - next_digit) / 10;
-	return (lim < ret);
-}
-
 int	ft_atoi(const char *str)
 {
 	char		*cur;
@@ -761,11 +753,7 @@ int	ft_atoi(const char *str)
 		cur++;
 	}
 	while (ft_isdigit(*cur))
-	{
-		if (check_overflow(ret, (*(cur) - '0')))
-			return (minus_cnt - 1);
 		ret = ret * 10 + (*(cur++) - '0');
-	}
 	if (minus_cnt)
 		ret *= -1;
 	return (ret);
