@@ -735,6 +735,14 @@ static int	my_issign(int c)
 	return ('+' == c || '-' == c);
 }
 
+static int	check_overflow(long long ret, int next_digit)
+{
+	long long	lim;
+
+	lim = (INT64_MAX - next_digit) / 10;
+	return (lim < ret);
+}
+
 int	ft_atoi(const char *str)
 {
 	char		*cur;
@@ -753,7 +761,11 @@ int	ft_atoi(const char *str)
 		cur++;
 	}
 	while (ft_isdigit(*cur))
+	{
+		if (check_overflow(ret, (*(cur) - '0')))
+			return (minus_cnt - 1);
 		ret = ret * 10 + (*(cur++) - '0');
+	}
 	if (minus_cnt)
 		ret *= -1;
 	return (ret);
@@ -764,8 +776,6 @@ int	ft_atoi(const char *str)
 * 음수와 양수의 나머지/나눗셈 연산이 다르므로, 음수라면 양수로 바꾸어준다.
 * *INT32_MIN*을 양수로 변환하는 과정에서, *int*로는 오버플로우가 일어나므로 *long long*을 사용했다.
 * 유효하지 않은 글자가 등장하는 즉시, 지금까지의 결과를 반환한다.
-* *atoi*는 64비트 정수형으로 다룰 수 없는 수는 수가 양수일때 -1, 음수일때 0을 반환한다.
-* 연산은 무조건 양수로 이루어지므로, 각 연산마다 오버플로우가 일어나는지 확인하여 구현했다.
 
 - - -
 </details>
