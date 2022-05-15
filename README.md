@@ -1982,5 +1982,6 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 * 그러므로 동적할당을 실패했다면, 새로 만들어두었던 리스트에 대해서 *free*하는 작업을 해주었다.
 - - -
 </details>
-	
+
+- - -
 <img width="797" alt="스크린샷 2022-05-15 오후 10 46 16" src="https://user-images.githubusercontent.com/67845112/168476120-dce8a2d3-3209-4a2a-b4c0-370e37a19f1c.png">
