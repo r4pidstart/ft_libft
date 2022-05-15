@@ -174,6 +174,8 @@ int	ft_isprint(int c)
 /*                                                                            */
 /* ************************************************************************** */
 
+#include"./libft.h"
+
 int	ft_strlen(const char *s)
 {
 	size_t	n;
