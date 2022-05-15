@@ -39,7 +39,7 @@ $(NAME): $(SRCS:.c=.o)
 	ar rcs $@ $^
 
 bonus: fclean
-	$(MAKE) $(NAME) BONUS=1
+	$(MAKE) BONUS=1 $(NAME)
 
 %.o: %.c
 	gcc $(CFLAGS) -c $^ -o $@
