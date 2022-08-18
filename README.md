@@ -1985,3 +1985,5 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 
 - - -
 <img width="797" alt="스크린샷 2022-05-15 오후 10 46 16" src="https://user-images.githubusercontent.com/67845112/168476120-dce8a2d3-3209-4a2a-b4c0-370e37a19f1c.png">
+
+[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fr4pidstart%2Fft_libft&count_bg=%23000000&title_bg=%23000000&icon=&icon_color=%23000000&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)
