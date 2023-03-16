@@ -721,7 +721,7 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 /*   By: tjo <tjo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 04:50:29 by tjo               #+#    #+#             */
-/*   Updated: 2022/04/14 14:31:36 by tjo              ###   ########.fr       */
+/*   Updated: 2023/03/16 22:27:31 by tjo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -729,7 +729,7 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 
 static int	my_isspace(int c)
 {
-	return ((9 <= c && c <= 13) || c == 20 || c == 32);
+	return ((9 <= c && c <= 13) || c == 32);
 }
 
 static int	my_issign(int c)
