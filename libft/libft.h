@@ -6,7 +6,7 @@
 /*   By: tjo <tjo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 15:16:55 by tjo               #+#    #+#             */
-/*   Updated: 2022/04/14 14:30:46 by tjo              ###   ########.fr       */
+/*   Updated: 2023/03/16 23:31:48 by tjo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define LIBFT_H
 # include<stdlib.h>
 # include<unistd.h>
+# include<limits.h>
 
 typedef struct s_list
 {
