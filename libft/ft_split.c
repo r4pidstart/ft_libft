@@ -6,7 +6,7 @@
 /*   By: tjo <tjo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 15:47:37 by tjo               #+#    #+#             */
-/*   Updated: 2022/04/18 01:31:02 by tjo              ###   ########.fr       */
+/*   Updated: 2023/03/16 22:52:21 by tjo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ static char	**free_all(char **ret, size_t cur, char *s_cpy)
 {
 	size_t	idx;
 
-	idx = 0;
-	while (idx < cur)
-		free(ret[cur]);
+	idx = -1;
+	while (++idx < cur)
+		free(ret[idx]);
 	free(ret);
 	free(s_cpy);
 	return (0);
@@ -52,7 +52,7 @@ static char	**map_substr(char *s_cpy, size_t ret_cnt, size_t s_len)
 	ret_cur = 0;
 	ret = (char **)malloc(sizeof(char *) * (ret_cnt + 1));
 	if (!ret)
-		return (0);
+		return (free_all(0, 0, s_cpy));
 	while (cur < s_len)
 	{
 		if (s_cpy[cur] && (cur == 0 || !s_cpy[cur - 1]))
