@@ -6,7 +6,7 @@
 /*   By: tjo <tjo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 15:16:55 by tjo               #+#    #+#             */
-/*   Updated: 2023/03/16 23:31:48 by tjo              ###   ########.fr       */
+/*   Updated: 2023/03/18 15:45:35 by tjo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 # define LIBFT_H
 # include<stdlib.h>
 # include<unistd.h>
-# include<limits.h>
-
+# define LONG_MAX 9223372036854775807L
 typedef struct s_list
 {
 	void			*content;
