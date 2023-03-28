@@ -112,13 +112,13 @@ int	ft_isalnum(int c)
 /*   By: tjo <tjo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 15:51:01 by tjo               #+#    #+#             */
-/*   Updated: 2022/03/10 15:51:52 by tjo              ###   ########.fr       */
+/*   Updated: 2023/03/20 23:54:44 by tjo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_isascii(int c)
 {
-	return (0 <= c && c <= 0177);
+	return (0 <= c && c <= 127);
 }
 ```
 <!-- MARKDOWN-AUTO-DOCS:END -->
@@ -141,13 +141,13 @@ int	ft_isascii(int c)
 /*   By: tjo <tjo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 15:52:10 by tjo               #+#    #+#             */
-/*   Updated: 2022/03/10 15:53:37 by tjo              ###   ########.fr       */
+/*   Updated: 2023/03/20 23:54:32 by tjo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_isprint(int c)
 {
-	return (040 <= c && c <= 0176);
+	return (32 <= c && c <= 126);
 }
 ```
 <!-- MARKDOWN-AUTO-DOCS:END -->
